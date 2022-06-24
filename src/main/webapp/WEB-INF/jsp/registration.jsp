@@ -39,7 +39,8 @@
         <div>
             <h1>Registration</h1>
         </div>
-
+        <h1> this page should only be viewed with if the user have ADMIN Role</h1>
+        <br>
         <form:form modelAttribute="registration">
             <form:errors path="*" cssClass="errorblock" element="div" />
             <label for="textinput1">

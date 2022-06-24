@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping("/user")
-    public User getUser(@RequestParam(value = "firstname", defaultValue = "Bryan") String firstname,
-                        @RequestParam(value = "lastname", defaultValue = "Hansen") String lastname,
-                        @RequestParam(value = "age", defaultValue = "43") int age) {
+    public User getUser(@RequestParam(value = "firstname", defaultValue = "moamen") String firstname,
+                        @RequestParam(value = "lastname", defaultValue = "Hossam") String lastname) {
         User user = new User();
 
         user.setFirstname(firstname);
         user.setLastname(lastname);
-        user.setAge(age);
 
         return user;
     }

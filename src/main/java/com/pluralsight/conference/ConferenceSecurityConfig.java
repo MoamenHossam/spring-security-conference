@@ -36,6 +36,9 @@ public class ConferenceSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login*").permitAll()
                 .antMatchers("/assets/css/**", "assets/js/**", "/images/**").permitAll()
                 .antMatchers("/index*").permitAll()
+                .antMatchers("/user*").hasRole("USER")
+                .antMatchers("/user*").hasRole("ADMIN")
+                .antMatchers("/registration*").hasRole("ADMIN")
                 .anyRequest().authenticated()
 
                 .and()
@@ -72,23 +75,9 @@ public class ConferenceSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        //auth.inMemoryAuthentication()
-        //        .withUser("bryan").password(passwordEncoder().encode("pass")).roles("USER");
-        //auth.jdbcAuthentication()
-        //        .dataSource(dataSource);
-
-        auth.ldapAuthentication()
-                .userDnPatterns("uid={0},ou=people")
-                .groupSearchBase("ou=groups")
-                .contextSource()
-                .url("ldap://localhost:8389/dc=pluralsight,dc=com")
-                .and()
-                .passwordCompare()
-                .passwordEncoder(passwordEncoder())
-                .passwordAttribute("userPassword")
-                .and()
-                .userDetailsContextMapper(ctxMapper);
-
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
