@@ -10,4 +10,3 @@ this is a demo for how to use spring security
 there is two users already in the data base 
 1-username : moamen     password : moamen   this user has ROLE_USER
 2-username : kahky      password : kahky    this user has ROLE_ADMIN
-s3://us.com.syngenta.panda.prod/PROD/Loaders/VCF-Files/Plutella xylostella/HEI3976SNP_pipe_filtered.vcf_sed_head.vcf_filtered.vcf_rehead.vcf.setID.vcf_validated.vcf
